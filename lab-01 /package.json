@@ -1,0 +1,17 @@
+{
+  "name": "lab-01 ",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/prompt-sync": "^4.2.3",
+    "typescript": "^5.5.3"
+  },
+  "private": true
+}
