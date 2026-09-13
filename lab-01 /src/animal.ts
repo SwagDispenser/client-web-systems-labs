@@ -38,10 +38,10 @@ class Bird implements Animal {
 }
 
 class Fish implements Animal {
-    public timesSiblingsCatched?: number;
+    public SiblingsCatched?: boolean;
 
-    constructor(public type: string, public name: string, public age: number, timesSiblingsCatched?: number = 10) {
-        if (timesSiblingsCatched >= 10) {
+    constructor(public type: string, public name: string, public age: number, timesSiblingsCatched?: boolean) {
+        if (timesSiblingsCatched) {
             console.log("last of us");
         }
     }
