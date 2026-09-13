@@ -85,6 +85,3 @@ console.log("Rectangle pre-scaling:", rectangle.getArea());
 rectangle.scale(3);
 
 console.log("Scaling result: ", rectangle.getArea());
-
-console.log("Total area: ", totalArea);
-console.log("Total perimeter: ", totalPerimeter);
