@@ -48,5 +48,16 @@ class Fish implements Animal {
     move(): void {
         console.log ("fish running from fisherman");
     }
-
 }
+
+const cat: Cat = new Cat("Scottish", "Murka", 1, "aggressive");
+const bird: Bird = new Bird("Parrot", "Arkadiy", 9, true);
+const fish: Fish = new Fish("Karp", "Plavlyk", 99, true);
+
+cat.move();
+bird.move();
+fish.move();
+
+console.log(cat);
+console.log(bird);
+console.log(fish);
