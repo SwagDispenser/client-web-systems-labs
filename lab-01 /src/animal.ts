@@ -9,7 +9,7 @@ interface Animal {
 class Cat implements Animal {
     public meowTone?: string;
 
-    constructor(public type: string, public name: string, public age: number, meowTone?: string = "aggressive") {
+    constructor(public type: string, public name: string, public age: number, meowTone?: string) {
 
         if (meowTone === "aggressive") {
             this.meowTone = meowTone;
