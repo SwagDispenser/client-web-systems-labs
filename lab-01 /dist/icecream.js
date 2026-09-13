@@ -5,12 +5,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const prompt_sync_1 = __importDefault(require("prompt-sync"));
 const prompt = (0, prompt_sync_1.default)();
-const smallCupPrice = 10;
-const bigCupPrice = 25;
-const chocolatePrice = 5;
-const caramelPrice = 6;
-const berriesPrice = 10;
-const marshmallowTopping = 5;
-let chosenCup = prompt("Choose a cup type (Small/Big):");
-let chosenTopping = prompt("Choose minimum 1 or more topping type (Chocolate, Caramel, Berries, Marshmallow):");
-if (chosenTopping) { }
+let price = 0;
+let chosenCup = prompt("Choose a cup type (Small/Big): ".toLowerCase());
+if (chosenCup === "small") {
+    price += 10;
+}
+else if (chosenCup === "big") {
+    price += 25;
+}
+let chosenTopping = prompt("Choose 1+ topping (Chocolate, Caramel, Berries, Marshmallow): ".toLowerCase());
+let toppings = chosenTopping
+    .split(",")
+    .map(topping => topping.trim());
+let toppingsCount = toppings.length;
+if (toppings.includes("chocolate")) {
+    price += 5;
+}
+if (toppings.includes("caramel")) {
+    price += 6;
+}
+if (toppings.includes("berries")) {
+    price += 10;
+}
+if (toppings.includes("marshmallow")) {
+    price += 5;
+}
+console.log("Chosen cup:", chosenCup, "Chosen toppings:", toppings, "Total price:", price);
