@@ -1,0 +1,13 @@
+"use strict";
+const myName = "Dmytro";
+let myAge = 18;
+let studying = true;
+let friendNames = ["Jeka", "Lyonia", "IvanBossauto"];
+const friendAges = [19, 19, 19];
+let friendStatus = "Alive";
+console.log(myName);
+console.log(myAge);
+console.log(studying);
+console.log(friendNames);
+console.log(friendAges);
+console.log(friendStatus);
