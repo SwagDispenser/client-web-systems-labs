@@ -3,13 +3,14 @@
   "version": "1.0.0",
   "description": "Library management client application",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "vite build",
     "deploy": "npm run build && gh-pages -d dist --dest lab-02 --add",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
     "prepare": "cd .. && husky lab-02/.husky",
-    "start": "webpack serve --mode development",
+    "preview": "vite preview --host 0.0.0.0",
+    "start": "vite --host 0.0.0.0",
     "test": "TS_NODE_PROJECT=tsconfig.test.json mocha --config .mocharc.json",
     "typecheck": "tsc --noEmit"
   },
@@ -22,23 +23,16 @@
     "@typescript-eslint/eslint-plugin": "^8.44.0",
     "@typescript-eslint/parser": "^8.44.0",
     "chai": "^4.5.0",
-    "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
     "gh-pages": "^6.3.0",
-    "html-webpack-plugin": "^5.6.4",
     "husky": "^9.1.7",
     "mocha": "^11.7.2",
     "prettier": "^3.6.2",
     "sass": "^1.92.1",
-    "sass-loader": "^16.0.5",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.2",
-    "webpack": "^5.101.3",
-    "webpack-cli": "^6.0.1",
-    "webpack-dev-server": "^5.2.2"
+    "vite": "^7.1.4"
   },
   "private": true
 }

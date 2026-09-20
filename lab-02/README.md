@@ -21,8 +21,8 @@
 ## Технології
 
 - TypeScript у строгому режимі;
-- webpack, webpack-dev-server і ts-loader;
-- Bootstrap 5, підключений як npm-залежність через webpack;
+- Vite для dev-сервера та production-збірки;
+- Bootstrap 5, підключений як npm-залежність через Vite;
 - Sass;
 - Mocha та Chai;
 - ESLint і Prettier;
@@ -59,13 +59,14 @@ npm start
 ```
 
 Dev-сервер відкриває застосунок за адресою
-[http://localhost:9000](http://localhost:9000).
+[http://localhost:9000/client-web-systems-labs/lab-02/](http://localhost:9000/client-web-systems-labs/lab-02/).
 
 ## Команди
 
 ```bash
-npm start          # webpack dev-server із HMR
+npm start          # Vite dev-сервер із HMR
 npm run build      # production-збірка в dist/
+npm run preview    # локальний перегляд production-збірки
 npm run typecheck  # перевірка TypeScript без генерації файлів
 npm run lint       # ESLint
 npm run format     # форматування Prettier
@@ -120,6 +121,40 @@ npm run deploy
 ```text
 https://swagdispenser.github.io/client-web-systems-labs/lab-02/
 ```
+
+Шлях `/client-web-systems-labs/lab-02/` задано через параметр `base` у
+`vite.config.ts`, тому посилання на JS і CSS працюють у підкаталозі GitHub Pages.
+
+## Порівняння webpack і Vite
+
+Обидві версії перевірялися на тому самому застосунку й комп'ютері. Наведені числа
+є результатом локальних запусків і можуть трохи змінюватися залежно від системи.
+
+| Показник                         |         webpack |                               Vite |
+| -------------------------------- | --------------: | ---------------------------------: |
+| Початкова готовність dev-сервера |         1474 мс |                             195 мс |
+| Оновлення під час розробки       |       48–555 мс | практично миттєве через native ESM |
+| Внутрішній час production-збірки |         1896 мс |                             317 мс |
+| Повний час `npm run build`       |          2,79 с |                             0,70 с |
+| Основний JS без gzip             |        1,04 МіБ |                          29,97 КіБ |
+| Окремий CSS без gzip             | вбудований у JS |                         233,03 КіБ |
+
+Webpack потребував ручного налаштування `entry`, `output`, `ts-loader`, правил для
+CSS/SCSS, `HtmlWebpackPlugin` і `devServer`. Це дає повний контроль над кожним
+етапом, але збільшує конфігурацію та кількість залежностей. Vite потребує лише
+короткого `vite.config.ts`: TypeScript, CSS, Sass і HMR працюють без окремих
+loader-пакетів.
+
+Різниця в розмірі bundle частково пояснюється конфігурацією: webpack-версія
+вбудовувала Bootstrap CSS у JavaScript через `style-loader`, тоді як Vite виніс
+CSS в окремий оптимізований файл. Vite не виконує повну перевірку типів під час
+збірки, тому в проєкті збережено окрему команду `npm run typecheck`.
+
+Webpack має дуже зрілу екосистему й доречний для складних нестандартних pipeline.
+Vite також використовує розвинену екосистему плагінів, але пропонує простіші
+стандартні налаштування та швидший цикл розробки. Для цього невеликого
+TypeScript SPA Vite є зручнішим вибором: конфігурація коротша, dev-сервер і HMR
+швидші, а production-збірка компактніша без зміни прикладного коду.
 
 ## Conventional Commits
 
