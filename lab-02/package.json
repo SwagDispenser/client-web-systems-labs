@@ -4,6 +4,7 @@
   "description": "Library management client application",
   "scripts": {
     "build": "webpack --mode production",
+    "deploy": "npm run build && gh-pages -d dist --dest lab-02 --add",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
@@ -24,6 +25,7 @@
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^10.1.8",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.4",
     "husky": "^9.1.7",
     "mocha": "^11.7.2",
