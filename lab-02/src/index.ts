@@ -1,22 +1,32 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/main.scss';
 
+import { Book, type BookData } from './models/Book';
+import { User, type UserData } from './models/User';
+import { Library } from './services/Library';
+import { LibraryManager } from './services/LibraryManager';
+import { NotificationService } from './services/NotificationService';
+import { Storage } from './services/Storage';
+import { LibraryApp } from './ui/render';
+
 const root = document.querySelector<HTMLDivElement>('#app');
 
 if (!root) {
   throw new Error('Application root element was not found');
 }
 
-const page = document.createElement('main');
-page.className = 'container py-5';
+const bookStorage = new Storage<BookData[]>('library.books');
+const userStorage = new Storage<UserData[]>('library.users');
+const books = new Library<Book>((bookStorage.load() ?? []).map(Book.fromJSON));
+const users = new Library<User>((userStorage.load() ?? []).map(User.fromJSON));
 
-const heading = document.createElement('h1');
-heading.className = 'display-6 fw-semibold text-center mb-2';
-heading.textContent = 'Система управління бібліотекою';
+const persist = (): void => {
+  bookStorage.save(books.getAll().map((book) => book.toJSON()));
+  userStorage.save(users.getAll().map((user) => user.toJSON()));
+};
 
-const description = document.createElement('p');
-description.className = 'text-body-secondary text-center mb-0';
-description.textContent = 'Застосунок завантажено. Наступний етап — моделі даних.';
+const manager = new LibraryManager(books, users, persist);
+const notifications = new NotificationService();
+const app = new LibraryApp(root, manager, notifications);
 
-page.append(heading, description);
-root.append(page);
+app.mount();
