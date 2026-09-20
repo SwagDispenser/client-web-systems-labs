@@ -1,0 +1,1 @@
+npm --prefix lab-02 run lint && npm --prefix lab-02 test
