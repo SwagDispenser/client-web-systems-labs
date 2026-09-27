@@ -1,14 +1,54 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 import usersJson from '../data/user.json'
-import type { User } from '../types/user'
+import type { User, UserGender } from '../types/user'
 
 defineOptions({ name: 'UsersList' })
 
 const users = ref<User[]>(usersJson as User[])
 const visibleDetails = ref<Set<number>>(new Set())
 const failedPictures = ref<Set<number>>(new Set())
+const genderFilter = ref<'all' | UserGender>('all')
+const ageFilter = ref<'all' | '18-plus'>('all')
+const sortOption = ref<'default' | 'name-asc' | 'name-desc' | 'age-asc' | 'age-desc'>(
+  'default',
+)
+
+const filteredUsers = computed<User[]>(() => {
+  const result = users.value.filter((user) => {
+    const matchesGender = genderFilter.value === 'all' || user.gender === genderFilter.value
+    const matchesAge = ageFilter.value === 'all' || user.dob.age >= 18
+
+    return matchesGender && matchesAge
+  })
+
+  return result.sort((firstUser, secondUser) => {
+    switch (sortOption.value) {
+      case 'name-asc':
+        return getFullName(firstUser).localeCompare(getFullName(secondUser), 'uk')
+      case 'name-desc':
+        return getFullName(secondUser).localeCompare(getFullName(firstUser), 'uk')
+      case 'age-asc':
+        return firstUser.dob.age - secondUser.dob.age
+      case 'age-desc':
+        return secondUser.dob.age - firstUser.dob.age
+      default:
+        return 0
+    }
+  })
+})
+
+const hasActiveControls = computed(
+  () =>
+    genderFilter.value !== 'all' || ageFilter.value !== 'all' || sortOption.value !== 'default',
+)
+
+function resetControls(): void {
+  genderFilter.value = 'all'
+  ageFilter.value = 'all'
+  sortOption.value = 'default'
+}
 
 function toggleDetails(userId: number): void {
   if (visibleDetails.value.has(userId)) {
@@ -46,14 +86,117 @@ function formatDate(date: string): string {
         <p class="section-label">Усі профілі</p>
         <h2 id="users-heading">Користувачі</h2>
       </div>
-      <span class="users-count">{{ users.length }} профілів</span>
+      <span class="users-count">{{ filteredUsers.length }} із {{ users.length }}</span>
     </div>
 
-    <p v-if="users.length === 0" class="empty-message">Список юзерів пустий</p>
+    <div class="toolbar" aria-label="Керування списком користувачів">
+      <fieldset class="control-group">
+        <legend>Стать</legend>
+        <div class="button-group">
+          <button
+            type="button"
+            :class="{ active: genderFilter === 'all' }"
+            :aria-pressed="genderFilter === 'all'"
+            @click="genderFilter = 'all'"
+          >
+            Всі
+          </button>
+          <button
+            type="button"
+            :class="{ active: genderFilter === 'male' }"
+            :aria-pressed="genderFilter === 'male'"
+            @click="genderFilter = 'male'"
+          >
+            Чоловіки
+          </button>
+          <button
+            type="button"
+            :class="{ active: genderFilter === 'female' }"
+            :aria-pressed="genderFilter === 'female'"
+            @click="genderFilter = 'female'"
+          >
+            Жінки
+          </button>
+        </div>
+      </fieldset>
+
+      <fieldset class="control-group">
+        <legend>Вік</legend>
+        <div class="button-group">
+          <button
+            type="button"
+            :class="{ active: ageFilter === 'all' }"
+            :aria-pressed="ageFilter === 'all'"
+            @click="ageFilter = 'all'"
+          >
+            Всі
+          </button>
+          <button
+            type="button"
+            :class="{ active: ageFilter === '18-plus' }"
+            :aria-pressed="ageFilter === '18-plus'"
+            @click="ageFilter = '18-plus'"
+          >
+            18+
+          </button>
+        </div>
+      </fieldset>
+
+      <fieldset class="control-group control-group-wide">
+        <legend>Сортування</legend>
+        <div class="button-group">
+          <button
+            type="button"
+            :class="{ active: sortOption === 'name-asc' }"
+            :aria-pressed="sortOption === 'name-asc'"
+            @click="sortOption = 'name-asc'"
+          >
+            Ім’я ↑
+          </button>
+          <button
+            type="button"
+            :class="{ active: sortOption === 'name-desc' }"
+            :aria-pressed="sortOption === 'name-desc'"
+            @click="sortOption = 'name-desc'"
+          >
+            Ім’я ↓
+          </button>
+          <button
+            type="button"
+            :class="{ active: sortOption === 'age-asc' }"
+            :aria-pressed="sortOption === 'age-asc'"
+            @click="sortOption = 'age-asc'"
+          >
+            Вік ↑
+          </button>
+          <button
+            type="button"
+            :class="{ active: sortOption === 'age-desc' }"
+            :aria-pressed="sortOption === 'age-desc'"
+            @click="sortOption = 'age-desc'"
+          >
+            Вік ↓
+          </button>
+        </div>
+      </fieldset>
+
+      <button
+        class="reset-button"
+        type="button"
+        :disabled="!hasActiveControls"
+        @click="resetControls"
+      >
+        Очистити все
+      </button>
+    </div>
+
+    <p v-if="filteredUsers.length === 0" class="empty-message">
+      {{ users.length === 0 ? 'Список юзерів пустий' : 'За обраними фільтрами нікого не знайдено' }}
+    </p>
 
     <div v-else class="users-grid">
       <article
-        v-for="user in users"
+        v-for="user in filteredUsers"
         :key="user.id"
         class="user-card"
         :class="{
@@ -177,6 +320,85 @@ h2 {
   font-weight: 700;
   background: #eef2ff;
   border-radius: 999px;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  background: #fff;
+  border: 1px solid #e8ebf1;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.7rem 2rem rgb(29 36 63 / 5%);
+}
+
+.control-group {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.control-group legend {
+  padding: 0;
+  margin-bottom: 0.45rem;
+  color: #737b8b;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.button-group button,
+.reset-button {
+  min-height: 2.35rem;
+  padding: 0.5rem 0.72rem;
+  color: #505969;
+  font-size: 0.78rem;
+  font-weight: 750;
+  background: #f7f8fb;
+  border: 1px solid #e1e4eb;
+  border-radius: 0.65rem;
+  transition:
+    color 150ms ease,
+    background-color 150ms ease,
+    border-color 150ms ease,
+    transform 150ms ease;
+}
+
+.button-group button:hover,
+.reset-button:hover:not(:disabled) {
+  color: #4338ca;
+  border-color: #a5b4fc;
+  transform: translateY(-1px);
+}
+
+.button-group button.active {
+  color: #fff;
+  background: #4f46e5;
+  border-color: #4f46e5;
+}
+
+.reset-button {
+  color: #b42318;
+  background: #fff;
+  border-color: #fecaca;
+}
+
+.reset-button:disabled {
+  color: #a1a7b2;
+  background: #f7f8fb;
+  border-color: #e5e7eb;
+  cursor: not-allowed;
 }
 
 .users-grid {
@@ -376,6 +598,18 @@ dd {
 }
 
 @media (max-width: 820px) {
+  .toolbar {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .control-group-wide {
+    grid-column: 1 / -1;
+  }
+
+  .reset-button {
+    justify-self: start;
+  }
+
   .users-grid {
     grid-template-columns: 1fr;
   }
@@ -384,6 +618,18 @@ dd {
 @media (max-width: 520px) {
   .section-heading {
     align-items: center;
+  }
+
+  .toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .control-group-wide {
+    grid-column: auto;
+  }
+
+  .reset-button {
+    width: 100%;
   }
 
   .user-card {
