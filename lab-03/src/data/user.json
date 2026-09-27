@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "gender": "female",
+    "name": { "title": "Ms", "first": "Софія", "last": "Мельник" },
+    "location": {
+      "street": { "number": 14, "name": "вул. Лісова" },
+      "city": "Львів",
+      "state": "Львівська область",
+      "country": "Україна",
+      "postcode": "79000"
+    },
+    "email": "sofia.melnyk@example.com",
+    "phone": "+380 67 201 14 08",
+    "picture": "/users/user-01.jpg",
+    "dob": { "date": "2009-04-08", "age": 17 },
+    "hobbies": ["Малювання", "Настільні ігри", "Фотографія"],
+    "details": "Навчається в ліцеї та бере участь у міських творчих конкурсах."
+  },
+  {
+    "id": 2,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Максим", "last": "Бондар" },
+    "location": {
+      "street": { "number": 8, "name": "вул. Соборна" },
+      "city": "Рівне",
+      "state": "Рівненська область",
+      "country": "Україна",
+      "postcode": "33000"
+    },
+    "email": "maksym.bondar@example.com",
+    "phone": "+380 93 118 42 19",
+    "picture": "/users/user-02.jpg",
+    "dob": { "date": "2008-02-19", "age": 18 },
+    "hobbies": ["Футбол", "Відеомонтаж", "Подорожі"],
+    "details": "Першокурсник, який цікавиться медіавиробництвом і спортивною журналістикою."
+  },
+  {
+    "id": 3,
+    "gender": "female",
+    "name": { "title": "Ms", "first": "Анна", "last": "Коваль" },
+    "location": {
+      "street": { "number": 31, "name": "вул. Велика Васильківська" },
+      "city": "Київ",
+      "state": "Київ",
+      "country": "Україна",
+      "postcode": "01024"
+    },
+    "email": "anna.koval@example.com",
+    "phone": "+380 50 312 72 10",
+    "picture": "/users/user-03.jpg",
+    "dob": { "date": "2002-06-14", "age": 24 },
+    "hobbies": ["Йога", "Читання", "Кулінарія"],
+    "details": "Працює UX-дизайнеркою та досліджує доступність цифрових продуктів."
+  },
+  {
+    "id": 4,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Олександр", "last": "Шевченко" },
+    "location": {
+      "street": { "number": 76, "name": "просп. Науки" },
+      "city": "Харків",
+      "state": "Харківська область",
+      "country": "Україна",
+      "postcode": "61000"
+    },
+    "email": "oleksandr.shevchenko@example.com",
+    "phone": "+380 66 904 30 28",
+    "picture": "/users/user-04.jpg",
+    "dob": { "date": "1997-08-02", "age": 29 },
+    "hobbies": ["Біг", "Програмування", "Шахи"],
+    "details": "Frontend-розробник, який проводить локальні технічні мітапи."
+  },
+  {
+    "id": 5,
+    "gender": "female",
+    "name": { "title": "Mrs", "first": "Ірина", "last": "Ткаченко" },
+    "location": {
+      "street": { "number": 22, "name": "вул. Європейська" },
+      "city": "Полтава",
+      "state": "Полтавська область",
+      "country": "Україна",
+      "postcode": "36000"
+    },
+    "email": "iryna.tkachenko@example.com",
+    "phone": "+380 97 412 66 03",
+    "picture": "/users/user-05.jpg",
+    "dob": { "date": "1993-03-11", "age": 33 },
+    "hobbies": ["Садівництво", "Кераміка", "Піші прогулянки"],
+    "details": "Архітекторка та волонтерка громадських проєктів із благоустрою."
+  },
+  {
+    "id": 6,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Дмитро", "last": "Романюк" },
+    "location": {
+      "street": { "number": 5, "name": "вул. Незалежності" },
+      "city": "Івано-Франківськ",
+      "state": "Івано-Франківська область",
+      "country": "Україна",
+      "postcode": "76000"
+    },
+    "email": "dmytro.romaniuk@example.com",
+    "phone": "+380 99 511 87 42",
+    "picture": "/users/user-06.jpg",
+    "dob": { "date": "1985-07-23", "age": 41 },
+    "hobbies": ["Альпінізм", "Історія", "Велоспорт"],
+    "details": "Керує туристичною агенцією та розробляє маршрути Карпатами."
+  },
+  {
+    "id": 7,
+    "gender": "female",
+    "name": { "title": "Mrs", "first": "Наталія", "last": "Савчук" },
+    "location": {
+      "street": { "number": 43, "name": "вул. Театральна" },
+      "city": "Вінниця",
+      "state": "Вінницька область",
+      "country": "Україна",
+      "postcode": "21000"
+    },
+    "email": "nataliia.savchuk@example.com",
+    "phone": "+380 63 221 45 76",
+    "picture": "/users/user-07.jpg",
+    "dob": { "date": "1977-01-30", "age": 49 },
+    "hobbies": ["Театр", "Вишивання", "Музика"],
+    "details": "Викладає українську літературу та організовує учнівський театр."
+  },
+  {
+    "id": 8,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Віктор", "last": "Олійник" },
+    "location": {
+      "street": { "number": 18, "name": "вул. Приморська" },
+      "city": "Одеса",
+      "state": "Одеська область",
+      "country": "Україна",
+      "postcode": "65000"
+    },
+    "email": "viktor.oliinyk@example.com",
+    "phone": "+380 68 703 29 14",
+    "picture": "/users/user-08.jpg",
+    "dob": { "date": "1970-05-17", "age": 56 },
+    "hobbies": ["Риболовля", "Джаз", "Моделювання"],
+    "details": "Інженер-механік, який у вільний час збирає моделі кораблів."
+  },
+  {
+    "id": 9,
+    "gender": "female",
+    "name": { "title": "Mrs", "first": "Людмила", "last": "Гриценко" },
+    "location": {
+      "street": { "number": 27, "name": "вул. Центральна" },
+      "city": "Черкаси",
+      "state": "Черкаська область",
+      "country": "Україна",
+      "postcode": "18000"
+    },
+    "email": "liudmyla.hrytsenko@example.com",
+    "phone": "+380 95 802 61 33",
+    "picture": "/users/user-09.jpg",
+    "dob": { "date": "1959-09-12", "age": 67 },
+    "hobbies": ["Квіти", "Класична музика", "Мемуари"],
+    "details": "Лікарка на пенсії, яка допомагає місцевій благодійній організації."
+  },
+  {
+    "id": 10,
+    "gender": "male",
+    "name": { "title": "Mr", "first": "Петро", "last": "Дорошенко" },
+    "location": {
+      "street": { "number": 9, "name": "вул. Козацька" },
+      "city": "Запоріжжя",
+      "state": "Запорізька область",
+      "country": "Україна",
+      "postcode": "69000"
+    },
+    "email": "petro.doroshenko@example.com",
+    "phone": "+380 73 411 20 95",
+    "picture": "/users/user-10.jpg",
+    "dob": { "date": "1950-11-04", "age": 75 },
+    "hobbies": ["Бджільництво", "Краєзнавство", "Різьблення"],
+    "details": "Колишній учитель історії та автор матеріалів про рідний край."
+  }
+]
