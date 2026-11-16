@@ -14,7 +14,11 @@ export interface UserLocation {
   city: string
   state: string
   country: string
-  postcode: string
+  postcode: number
+  timezone: {
+    offset: string
+    description: string
+  }
 }
 
 export interface UserDateOfBirth {
@@ -29,6 +33,7 @@ export interface User {
   location: UserLocation
   email: string
   phone: string
+  cell: string
   picture: string
   dob: UserDateOfBirth
   hobbies: string[]

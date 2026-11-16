@@ -2,20 +2,25 @@
   {
     "id": 1,
     "gender": "female",
-    "name": { "title": "Ms", "first": "Софія", "last": "Мельник" },
+    "name": { "title": "Mrs", "first": "Emma", "last": "Lampi" },
     "location": {
-      "street": { "number": 14, "name": "вул. Лісова" },
-      "city": "Львів",
-      "state": "Львівська область",
-      "country": "Україна",
-      "postcode": "79000"
+      "street": { "number": 2304, "name": "Siilitie" },
+      "city": "Hausjärvi",
+      "state": "Uusimaa",
+      "country": "Finland",
+      "postcode": 98555,
+      "timezone": {
+        "offset": "+8:00",
+        "description": "Beijing, Perth, Singapore, Hong Kong"
+      }
     },
-    "email": "sofia.melnyk@example.com",
-    "phone": "+380 67 201 14 08",
-    "picture": "/users/user-01.jpg",
-    "dob": { "date": "2009-04-08", "age": 17 },
-    "hobbies": ["Малювання", "Настільні ігри", "Фотографія"],
-    "details": "Навчається в ліцеї та бере участь у міських творчих конкурсах."
+    "email": "emma.lampi@example.com",
+    "dob": { "date": "2001-03-08T01:39:19.084Z", "age": 25 },
+    "phone": "02-689-410",
+    "cell": "043-730-12-94",
+    "picture": "https://randomuser.me/api/portraits/women/87.jpg",
+    "hobbies": ["Подорожі", "Фотографія", "Піші прогулянки", "Читання", "Кулінарія"],
+    "details": "Любить подорожувати, фотографувати та відкривати нові місця."
   },
   {
     "id": 2,
@@ -26,10 +31,12 @@
       "city": "Рівне",
       "state": "Рівненська область",
       "country": "Україна",
-      "postcode": "33000"
+      "postcode": 33000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "maksym.bondar@example.com",
     "phone": "+380 93 118 42 19",
+    "cell": "+380 68 118 42 19",
     "picture": "/users/user-02.jpg",
     "dob": { "date": "2008-02-19", "age": 18 },
     "hobbies": ["Футбол", "Відеомонтаж", "Подорожі"],
@@ -44,10 +51,12 @@
       "city": "Київ",
       "state": "Київ",
       "country": "Україна",
-      "postcode": "01024"
+      "postcode": 1024,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "anna.koval@example.com",
     "phone": "+380 50 312 72 10",
+    "cell": "+380 63 312 72 10",
     "picture": "/users/user-03.jpg",
     "dob": { "date": "2002-06-14", "age": 24 },
     "hobbies": ["Йога", "Читання", "Кулінарія"],
@@ -62,10 +71,12 @@
       "city": "Харків",
       "state": "Харківська область",
       "country": "Україна",
-      "postcode": "61000"
+      "postcode": 61000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "oleksandr.shevchenko@example.com",
     "phone": "+380 66 904 30 28",
+    "cell": "+380 97 904 30 28",
     "picture": "/users/user-04.jpg",
     "dob": { "date": "1997-08-02", "age": 29 },
     "hobbies": ["Біг", "Програмування", "Шахи"],
@@ -80,10 +91,12 @@
       "city": "Полтава",
       "state": "Полтавська область",
       "country": "Україна",
-      "postcode": "36000"
+      "postcode": 36000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "iryna.tkachenko@example.com",
     "phone": "+380 97 412 66 03",
+    "cell": "+380 50 412 66 03",
     "picture": "/users/user-05.jpg",
     "dob": { "date": "1993-03-11", "age": 33 },
     "hobbies": ["Садівництво", "Кераміка", "Піші прогулянки"],
@@ -98,10 +111,12 @@
       "city": "Івано-Франківськ",
       "state": "Івано-Франківська область",
       "country": "Україна",
-      "postcode": "76000"
+      "postcode": 76000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "dmytro.romaniuk@example.com",
     "phone": "+380 99 511 87 42",
+    "cell": "+380 67 511 87 42",
     "picture": "/users/user-06.jpg",
     "dob": { "date": "1985-07-23", "age": 41 },
     "hobbies": ["Альпінізм", "Історія", "Велоспорт"],
@@ -116,10 +131,12 @@
       "city": "Вінниця",
       "state": "Вінницька область",
       "country": "Україна",
-      "postcode": "21000"
+      "postcode": 21000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "nataliia.savchuk@example.com",
     "phone": "+380 63 221 45 76",
+    "cell": "+380 93 221 45 76",
     "picture": "/users/user-07.jpg",
     "dob": { "date": "1977-01-30", "age": 49 },
     "hobbies": ["Театр", "Вишивання", "Музика"],
@@ -134,10 +151,12 @@
       "city": "Одеса",
       "state": "Одеська область",
       "country": "Україна",
-      "postcode": "65000"
+      "postcode": 65000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "viktor.oliinyk@example.com",
     "phone": "+380 68 703 29 14",
+    "cell": "+380 95 703 29 14",
     "picture": "/users/user-08.jpg",
     "dob": { "date": "1970-05-17", "age": 56 },
     "hobbies": ["Риболовля", "Джаз", "Моделювання"],
@@ -152,10 +171,12 @@
       "city": "Черкаси",
       "state": "Черкаська область",
       "country": "Україна",
-      "postcode": "18000"
+      "postcode": 18000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "liudmyla.hrytsenko@example.com",
     "phone": "+380 95 802 61 33",
+    "cell": "+380 73 802 61 33",
     "picture": "/users/user-09.jpg",
     "dob": { "date": "1959-09-12", "age": 67 },
     "hobbies": ["Квіти", "Класична музика", "Мемуари"],
@@ -170,10 +191,12 @@
       "city": "Запоріжжя",
       "state": "Запорізька область",
       "country": "Україна",
-      "postcode": "69000"
+      "postcode": 69000,
+      "timezone": { "offset": "+2:00", "description": "Kyiv, Eastern Europe" }
     },
     "email": "petro.doroshenko@example.com",
     "phone": "+380 73 411 20 95",
+    "cell": "+380 96 411 20 95",
     "picture": "/users/user-10.jpg",
     "dob": { "date": "1950-11-04", "age": 75 },
     "hobbies": ["Бджільництво", "Краєзнавство", "Різьблення"],
